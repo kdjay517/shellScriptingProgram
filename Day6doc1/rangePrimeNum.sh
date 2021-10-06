@@ -2,14 +2,29 @@
 #program to take a range of number as input and output 
 #the prime numbers in that range
 
-read -p "Enter the range:" a b
-for (( i=$a;i<=$b;i++ ))
+low=1
+count=0
+
+while [ $low -eq 1 ]
 do
-	if [ $(($a%2)) -ne 0 ]
-	then
-		echo "$a is a prime number"
-	else
-		echo "$a is not a prime number"
-	fi
+echo "Enter the lower number ,greater than 1"
+read low
 done
+
+echo "Enter the upper limit"
+read upper
+
+
+for mun in `seq $low $upper`
+do
+ret=$(factor $mun | grep $mun | cut -d ":" -f 2 | cut -d " " -f 2)
+
+if [ "$ret" -eq "$mun" ]
+then
+echo "$mun is prime"
+((count++))
+fi
+done
+
+echo -e "\n There are $count number of prime numbers"
 

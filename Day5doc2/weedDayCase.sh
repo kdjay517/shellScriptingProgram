@@ -2,7 +2,7 @@
 #Read a number and display the week day 
 
 read -p "Enter a Number:" d
-e=$(($d/7));
+e=$(($d));
 case $e in
 0 )
 	echo "sunday"

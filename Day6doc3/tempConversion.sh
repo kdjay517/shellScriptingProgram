@@ -2,47 +2,45 @@
 
 #temp conversion degC to degF vice versa
 
-read -p "Enter the temperature in (degC or degF):" t
-read -p "Mention the Temperature conversion you want (degC or degF):" "x"
+echo -n "Enter the input Freezing Point is (0C / 32F) "
+echo -n "Enter the Boiling Point of Water is (100C / 212F)"
 
-degCtodegF() {
-	s=$1;
+function degreeCelsius()
+        {
+                if (( $degF >= 32 & $degF <= 212 ))
+                then
+                      degC=`awk "BEGIN { print( $degF - 32 )*(5/9)}"`
+                        echo "$degC C"
+                else
+                echo "Farehenheit Range should be 32F to 212F"
+                fi
+                return
+        }
 
-	if [ $s -ge 0 -a $s -le 100 ]
-	then
-		c=$(echo "scale=2;$(($s*9/5))"|bc);
-		degF=$(echo "scale=2;$(($c+32))"|bc);
-		echo "temperature $sF is $degF in C"
-		else
-			"Enter a valid range (0-100) for degC to degF conversion"
-	fi
+function degreeFarenheit()
+        {
+                if (( $degC >= 1 & $degC <= 100 ))
+                then
+                degF=`awk "BEGIN {print ($degC*(9/5) +32)}"`
+                echo "$degF F"
+                else
+                echo "Temperature range must be 0C to 100C"
+                fi
+return
+        }
 
-}
-degFtodegC() {
-	s=$1
+                read -p "Choose of anyone Options for conversion /n 1.Conversion of Farenheit to Celsius /n 2. Conversion of celsius to Farenheit " n
+case $n in
+                1)      echo "Conversion of Farenheit to Celsius"
+                        read -p "Enter the Farenheit input:" degF
+                                degreeCelsius  ;;
 
-	if [ $s -ge 32 -a $s -le 212 ]
-	then
-		k=$(($s-32))
-		degC=$(echo "scale=2;$(($k*5/9))"|bc)
-		echo "temperature $sC is $degC in F"
-	else
-		echo "Enter a valid range (32-212) for degF to degC conversion"
-	fi
-}
-case "$x" in
+                2)      echo "Conversion of Celsius to Farenheit"
+                        read -p  "Enter the Celsius value:" degC
+                                degreeFarenheit ;;
 
-degF )
-		degCtodegF $t;
-		;;
-degC )
-		degFtodegC $t;
-		;;
-* )
-		echo "Enter proper conversion"
-		;;
-
-esac
+                *)   echo "Default OPtion" ;;
+        esac
 
 
 
