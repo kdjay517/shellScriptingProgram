@@ -1,6 +1,6 @@
 #!/bin/bash -x
-read -p "Enter the day:" d
-read -p "Enter the month:" m
+read -p "Enter the day (0-31):" d
+read -p "Enter the month(3-6):" m
 if [ $d -gt 20 -a $d -lt 31 -a $m -eq 3 ]
 then
 	echo "true"

@@ -1,7 +1,7 @@
 #!/bin/bash -x
 for ((i=0; i<5; i++))
 do
-	x=$(($RANDOM % 1000));
+	x=`shuf -i 100-999 -n1`;
 	random[i]=$x;
 	echo "${random[@]}";
 done

@@ -2,47 +2,54 @@
 
 #write function check if number is prime
 #write function to get the palindrome
-#check if the palindrome number is also prime
-
-read -p "Enter the Number:" n
+#check if the palidrome number is also primenumber
 
 
-function primeNumberCheck() {
+read -p "Enter a number to check prime and  palindrome are same or not :" n
 
-	s=$1;
-	if [ $(($s%2)) -eq 1 ]
-	then
-		echo "$s is a prime Number"
-	else
-		echo "$s is not a prime Number"
-	fi
+function prime()
+{
+count=0
+for((i=1;i<=$n;i++))
+do
+        if [ $((n%i)) -eq 0 ]
+        then
+        count=$(($count+1))
+        fi
+done
+if [ $count -eq 2 ]
+then
+      echo "$n is a Prime Number"
+else
+      echo "$n is not a Prime Number"
+fi
+
 }
+prime $n
 
 function palindrome() {
-
-	s=$1;
-	while [ $s -ne 0 ]
-	do
-		rem=$((s%10))
-		rev=$((rev*10+rem))
-		s=$((s/10))
-	done
-	if [ $rev -eq $n ]
-	then
-		echo "$n is a palindrome"
-	else
-		echo "$n is not a palindrome"
-	fi
-	if [ $(($rev%2)) -eq 1 ]
-	then
-		echo "$rev is a prime Number"
-	else
-		echo "$rev is not a prime Number"
-	fi
-
+reminder=0
+sum=0
+temp=$n
+while [ $n -gt 0 ]
+do
+	reminder=$(( $n % 10 ))
+	sum=$(( $sum * 10 + $reminder ))
+	n=$(( $n / 10 ))
+done
+if [ $sum -eq $temp ]
+then
+	echo "$temp number is palindrome"
+else
+        echo "$temp number is not palindrome"
+fi
 }
+palindrome $temp
 
 
-primeNumberCheck $n
-palindrome $n
-
+if [ $n -eq $temp ]
+then
+        echo "prime and palindorme are equal "
+else
+        echo "prime and palindrome numbers are not equal "
+fi

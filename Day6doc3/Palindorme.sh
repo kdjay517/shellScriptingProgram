@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
-checkPalindrome() {
-    local s=$1
+function checkPalindrome() {
+         s=$1
 	rev=0;
     for i in $s
     do
@@ -41,5 +41,7 @@ do
     if checkPalindrome "$word"
     then
         echo "$word is palindrome"
-    fi
+    else
+	echo "$word is not a palindrome"
+fi
 done

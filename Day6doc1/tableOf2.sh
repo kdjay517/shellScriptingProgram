@@ -1,7 +1,6 @@
 #!/bin/bash -x
 #write a program that takes a command line argument n and prints a 
-#table of the powers of 2 that are less than or equal to 2^n till
-#256 is reaches
+#table of the powers of 2 that are less than or equal to 2^n .
 
 
 read -p "Enter the Number:" n
@@ -15,5 +14,5 @@ do
 		c=$(($a*$i));
 		echo $a'x'$b'='$c
 	done
-	
+
 done
